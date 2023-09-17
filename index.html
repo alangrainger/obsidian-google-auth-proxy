@@ -16,11 +16,17 @@
           <h1>Authentication in progress</h1>
         </header>
         <p>Please wait and you should be redirected back to Obsidian.</p>
+        <p>If it does not automatically redirect, please click this link:</p>
+        <p><a id="redirect-link" href=""></a></p>
       </section>
     </main>
   </div>
   <script>
-    window.location = 'obsidian://google-photos' + window.location.search
+    const link = 'obsidian://google-photos' + window.location.search
+    const linkEl = document.getElementById('redirect-link')
+    linkEl.setAttribute('href', link)
+    linkEl.innerText = link
+    window.location.href = link
   </script>
 </body>
 </html>
