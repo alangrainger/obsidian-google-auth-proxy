@@ -4,23 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kimeiga/bahunya/dist/bahunya.min.css">
+  <title>Obsidian Google Auth proxy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.css">
 </head>
 
 <body>
-  <div class="page" role="document">
-    <main role="main">
-      <section>
-        <header>
-          <h1>Authentication in progress</h1>
-        </header>
-        <p>Please wait and you should be redirected back to Obsidian.</p>
-        <p>If it does not automatically redirect, please click this link:</p>
-        <p><a id="redirect-link" href="" target="_blank"></a></p>
-      </section>
-    </main>
-  </div>
+  <main>
+    <h1>Authentication in progress</h1>
+    <p>Please wait and you should be redirected back to Obsidian.</p>
+    <p>If it does not automatically redirect, please click this link:</p>
+    <p><a id="redirect-link" href="" target="_blank"></a></p>
+  </main>
   <script>
     // Get the handler parameter so we can send to the correct protocol handler
     const params = (new URL(document.location)).searchParams
