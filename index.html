@@ -22,11 +22,21 @@
     </main>
   </div>
   <script>
-    const link = 'obsidian://google-photos' + window.location.search
-    const linkEl = document.getElementById('redirect-link')
-    linkEl.setAttribute('href', link)
-    linkEl.innerText = link
-    window.open(link)
+    // Get the plugin parameter so we can send to the correct handler
+    const params = (new URL(document.location)).searchParams
+    const plugin = params.get('plugin')
+
+    // Plugin must be whitelisted
+    const whitelistedPlugins = ['google-photos']
+
+    if (whitelistedPlugins.includes(plugin)) {
+      const link = 'obsidian://' + plugin + window.location.search
+      const linkEl = document.getElementById('redirect-link')
+      linkEl.setAttribute('href', link)
+      linkEl.innerText = link
+      window.open(link)
+    }
   </script>
 </body>
+
 </html>
