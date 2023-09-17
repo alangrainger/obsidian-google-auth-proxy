@@ -22,20 +22,16 @@
     </main>
   </div>
   <script>
-    // Get the plugin parameter so we can send to the correct handler
+    // Get the handler parameter so we can send to the correct protocol handler
     const params = (new URL(document.location)).searchParams
-    const plugin = params.get('plugin')
+    const handler = params.get('handler')
 
-    // Plugin must be whitelisted
-    const whitelistedPlugins = ['google-photos']
-
-    if (whitelistedPlugins.includes(plugin)) {
-      const link = 'obsidian://' + plugin + window.location.search
-      const linkEl = document.getElementById('redirect-link')
-      linkEl.setAttribute('href', link)
-      linkEl.innerText = link
-      window.open(link)
-    }
+    // Redirect to Obsidian and transparently pass the full search query
+    const link = 'obsidian://' + handler + window.location.search
+    const linkEl = document.getElementById('redirect-link')
+    linkEl.setAttribute('href', link)
+    linkEl.innerText = link
+    window.open(link)
   </script>
 </body>
 
