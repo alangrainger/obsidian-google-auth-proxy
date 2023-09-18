@@ -13,20 +13,24 @@
     <h1>Authentication in progress</h1>
     <p>Please wait and you should be redirected back to Obsidian.</p>
     <p>If it does not automatically redirect, please click this link:</p>
-    <p><a id="redirect-link" href="" target="_blank"></a></p>
+    <p>
+      <a id="redirect-link" href="" target="_blank"><!-- Redirection link will be added here --></a>
+    </p>
   </main>
   <script>
     // Get the handler parameter so we can send to the correct protocol handler
-    const params = (new URL(document.location)).searchParams
-    const handler = params.get('handler')
+    const urlQuery = (new URL(document.location)).searchParams
+    const handlerId = urlQuery.get('handler')
 
     // Redirect to Obsidian and transparently pass the full search query
-    if (handler) {
-      const link = 'obsidian://' + handler + window.location.search
+    if (handlerId) {
+      const obsidianUrl = 'obsidian://' + handlerId + window.location.search
+      // Create a clickable link, in case the automatic redirection doesn't work
       const linkEl = document.getElementById('redirect-link')
-      linkEl.setAttribute('href', link)
-      linkEl.innerText = link
-      window.open(link)
+      linkEl.setAttribute('href', obsidianUrl)
+      linkEl.innerText = obsidianUrl
+      // Redirect to the `obsidian://` URL
+      window.open(obsidianUrl)
     }
   </script>
 </body>
